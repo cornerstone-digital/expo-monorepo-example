@@ -1,0 +1,7 @@
+[install]
+# Enable workspace support
+workspaces = ["apps/*", "libs/*", "libs/features/*"]
+
+[install.cache]
+# Cache configuration
+dir = ".bun-cache"

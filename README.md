@@ -1,6 +1,37 @@
 # Expo Monorepo Example
 
-An example NX monorepo for an Expo React Native project demonstrating best practices for organizing shared libraries, feature packages, and mobile applications.
+An example NX monorepo for an Expo React Native project demonstrating best practices for organizing shared libraries, feature packages, and mobile applications. Uses **Bun** as the package manager and **ASDF** for version management.
+
+## 🛠️ Prerequisites
+
+### Using ASDF (Recommended)
+
+This project uses ASDF for managing tool versions. The `.tool-versions` file specifies the exact versions of Node.js and Bun to use.
+
+```bash
+# Install ASDF plugins
+asdf plugin add nodejs
+asdf plugin add bun
+
+# Install versions from .tool-versions
+asdf install
+```
+
+### Manual Installation
+
+- Node.js 20.19.6+
+- Bun 1.3.6+ (optional - for future use as primary package manager)
+- Expo CLI
+- iOS Simulator (for iOS development) or Android Emulator (for Android development)
+
+### Package Manager
+
+This project is configured to work with **Bun** as specified in `packageManager` field. However, due to current Expo/React Native compatibility, npm is used for dependency installation. The project structure and scripts are designed to support Bun when ecosystem support improves.
+
+Files for Bun support:
+- `.tool-versions` - ASDF version management
+- `bunfig.toml` - Bun workspace configuration  
+- `package.json` - packageManager field set to bun@1.3.6
 
 ## 📁 Project Structure
 
@@ -29,20 +60,11 @@ expo-monorepo-example/
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Node.js 18+ and npm
-- Expo CLI
-- iOS Simulator (for iOS development) or Android Emulator (for Android development)
-
 ### Installation
 
 ```bash
-# Install dependencies
-npm install
-
-# Install dependencies in the mobile app
-cd apps/mobile && npm install
+# Install dependencies using npm (Bun support coming when ecosystem matures)
+npm install --legacy-peer-deps
 ```
 
 ### Running the Mobile App
@@ -52,7 +74,7 @@ cd apps/mobile && npm install
 npm run mobile
 
 # Or run directly with NX
-nx start mobile
+npx nx start mobile
 
 # Run on iOS
 npm run mobile:ios
@@ -104,23 +126,24 @@ import { LoginForm } from '@expo-monorepo/features/auth';
 - `npm run build` - Build all packages
 - `npm run lint` - Lint all packages
 - `npm run test` - Run tests for all packages
+- `npm run graph` - View the NX project dependency graph
 
 ### NX Commands
 
 ```bash
 # Run a specific target for a project
-nx [target] [project]
+npx nx [target] [project]
 
 # Examples:
-nx start mobile
-nx lint ui
-nx test features-auth
+npx nx start mobile
+npx nx lint ui
+npx nx test features-auth
 
 # Run a target for all projects
-nx run-many --target=lint --all
+npx nx run-many --target=lint --all
 
 # View project graph
-nx graph
+npx nx graph
 ```
 
 ## 🏗️ Architecture
@@ -129,6 +152,8 @@ This monorepo uses:
 
 - **NX** - Build system and monorepo management
 - **npm workspaces** - Package management and linking
+- **ASDF** - Version manager for Node.js and Bun
+- **Bun** - Configured for future use as primary package manager
 - **TypeScript** - Type safety across all packages
 - **Expo** - React Native development platform
 - **React Native** - Cross-platform mobile development

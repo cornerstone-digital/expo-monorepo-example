@@ -1,6 +1,3 @@
-# Node modules
-node_modules/
-
 # Build outputs
 dist/
 build/
@@ -23,6 +20,7 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+bun-debug.log*
 
 # Environment
 .env
@@ -54,3 +52,11 @@ web-build/
 # Temporary files
 tmp/
 temp/
+
+# Package managers
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+.bun-cache/
