@@ -1,0 +1,33 @@
+{
+  "name": "expo-monorepo-example",
+  "version": "1.0.0",
+  "description": "Example monorepo for an Expo React Native project using NX, Bun, and ASDF",
+  "private": true,
+  "packageManager": "bun@1.3.6",
+  "workspaces": [
+    "apps/*",
+    "libs/*",
+    "libs/features/*"
+  ],
+  "scripts": {
+    "mobile": "nx start mobile",
+    "mobile:ios": "nx ios mobile",
+    "mobile:android": "nx android mobile",
+    "build": "nx run-many --target=build --all",
+    "lint": "nx run-many --target=lint --all",
+    "test": "nx run-many --target=test --all",
+    "graph": "nx graph"
+  },
+  "keywords": ["expo", "react-native", "nx", "monorepo", "bun"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nx/expo": "^22.3.3",
+    "@nx/js": "^22.3.3",
+    "@nx/react-native": "^22.3.3",
+    "@nx/workspace": "^22.3.3",
+    "@types/react": "~18.3.12",
+    "nx": "^22.3.3",
+    "typescript": "^5.9.3"
+  }
+}
